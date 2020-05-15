@@ -1,7 +1,7 @@
 import 'dart:io';
 
 import 'package:flutter/material.dart';
-import 'package:image_picker/image_picker.dart';
+// import 'package:image_picker/image_picker.dart';
 
 class ImageSourceSheet extends StatelessWidget {
 
@@ -24,16 +24,16 @@ class ImageSourceSheet extends StatelessWidget {
             leading: Icon(Icons.camera_enhance),
             title: Text('Camera'),
             onTap: () async {
-              File image = await ImagePicker.pickImage(source: ImageSource.camera);
-              imageSelected(image);
+              // File image = await ImagePicker.pickImage(source: ImageSource.camera);
+              // imageSelected(image);
             },
           ),
           ListTile(
             leading: Icon(Icons.image),
             title: Text('Gallery'),
             onTap: () async {
-              File image = await ImagePicker.pickImage(source: ImageSource.gallery);
-              imageSelected(image);
+              // File image = await ImagePicker.pickImage(source: ImageSource.gallery);
+              // imageSelected(image);
             },
           )
         ],

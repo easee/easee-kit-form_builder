@@ -115,7 +115,7 @@ class _FormBuilderCountryPickerState extends State<FormBuilderCountryPicker> {
           contentPadding: EdgeInsets.zero,
           leading: CountryPickerUtils.getDefaultFlagImage(country),
           title: Text("${country.name}"),
-          visualDensity: VisualDensity.compact,
+          // visualDensity: VisualDensity.compact,
         ),
       );
 

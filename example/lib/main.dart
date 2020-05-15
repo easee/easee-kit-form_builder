@@ -499,20 +499,20 @@ class MyHomePageState extends State<MyHomePage> {
                         }
                       ],
                     ),
-                    FormBuilderCountryPicker(
-                      defaultSelectedCountryIsoCode: 'US',
-                      attribute: "country",
-                      cursorColor: Colors.black,
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                      priorityListByIsoCode: ['US'],
-                      valueTransformer: (value) {
-                        return value.isoCode;
-                      },
-                      decoration: InputDecoration(border: OutlineInputBorder(), labelText: "Country"),
-                      validators: [
-                        FormBuilderValidators.required(errorText: 'This field required.'),
-                      ],
-                    ),
+                    // FormBuilderCountryPicker(
+                    //   defaultSelectedCountryIsoCode: 'US',
+                    //   attribute: "country",
+                    //   cursorColor: Colors.black,
+                    //   style: TextStyle(color: Colors.black, fontSize: 18),
+                    //   priorityListByIsoCode: ['US'],
+                    //   valueTransformer: (value) {
+                    //     return value.isoCode;
+                    //   },
+                    //   decoration: InputDecoration(border: OutlineInputBorder(), labelText: "Country"),
+                    //   validators: [
+                    //     FormBuilderValidators.required(errorText: 'This field required.'),
+                    //   ],
+                    // ),
                     FormBuilderPhoneField(
                       attribute: 'phone_number',
                       keyboardType: TextInputType.phone,
