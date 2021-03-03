@@ -513,19 +513,7 @@ class MyHomePageState extends State<MyHomePage> {
                     //     FormBuilderValidators.required(errorText: 'This field required.'),
                     //   ],
                     // ),
-                    FormBuilderPhoneField(
-                      attribute: 'phone_number',
-                      keyboardType: TextInputType.phone,
-                      defaultSelectedCountryIsoCode: 'US',
-                      cursorColor: Colors.black,
-                      style: TextStyle(color: Colors.black, fontSize: 18),
-                      decoration: InputDecoration(border: OutlineInputBorder(), labelText: "Phone Number"),
-                      priorityListByIsoCode: ['US'],
-                      validators: [
-                        FormBuilderValidators.numeric(errorText: 'Invalid phone number'),
-                        FormBuilderValidators.required(errorText: 'This field reqired')
-                      ],
-                    ),
+                    
                     FormBuilderSignaturePad(
                       decoration: InputDecoration(labelText: "Signature"),
                       attribute: "signature",

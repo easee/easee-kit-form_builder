@@ -3,6 +3,7 @@ description: Package to build Material Form with fields like TextField, DropDown
 version: 3.9.0
 author: Danvick Miller <danvickmiller@gmail.com>
 homepage: https://github.com/danvick/flutter_form_builder
+publish_to: none
 
 environment:
   sdk: '>=2.6.0 <3.0.0'
@@ -18,11 +19,12 @@ dependencies:
   flutter_colorpicker: ^0.3.4
   # signature: ^2.0.0 - Doesn't implement onChanged, submitted PR. Meanwhile using local clone with onChanged
   validators: ^2.0.0+1
-  date_range_picker: ^1.0.6
+  date_range_picker:
+    git:
+      url: https://github.com/LempereurBenjamin/date_range_picker
   flutter_touch_spin: ^1.0.1
   # image_picker: ^0.6.5+3
-  rating_bar: ^0.2.0
-  country_pickers: ^1.2.1
+  rating_bar: ^0.2.0  
 
 dev_dependencies:
   flutter_test:
