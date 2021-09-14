@@ -45,7 +45,7 @@ class SignatureState extends State<Signature> {
   void initState() {
     super.initState();
     _painterKey = GlobalKey();
-    _points = widget.points ?? List<Point>();
+    _points = widget.points ?? [];
   }
 
   //CLEAR POINTS AND REBUILD. CANVAS WILL BE BLANK

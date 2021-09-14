@@ -150,12 +150,12 @@ class _FormBuilderTypeAheadState<T> extends State<FormBuilderTypeAhead<T>> {
           widget.onSaved(transformed ?? val);
         }
       },
-      autovalidate: widget.autovalidate,
+      autovalidateMode: AutovalidationUtils.mode(widget.autovalidate),
       textFieldConfiguration: widget.textFieldConfiguration.copyWith(
         enabled: !_readOnly,
         controller: _typeAheadController,
         style: _readOnly
-            ? Theme.of(context).textTheme.subhead.copyWith(
+            ? Theme.of(context).textTheme.subtitle2.copyWith(
                   color: Theme.of(context).disabledColor,
                 )
             : widget.textFieldConfiguration.style,

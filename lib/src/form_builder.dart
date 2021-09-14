@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 typedef ValueTransformer<T> = dynamic Function(T value);
 
@@ -28,8 +29,8 @@ class FormBuilder extends StatefulWidget {
   FormBuilderState createState() => FormBuilderState();
 }
 
-class FormBuilderState extends State<FormBuilder> {
-  //TODO: Find way to assert no duplicates in field attributes
+class FormBuilderState extends State<FormBuilder> 
+{  
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   Map<String, GlobalKey<FormFieldState>> _fieldKeys;
@@ -108,7 +109,7 @@ class FormBuilderState extends State<FormBuilder> {
     return Form(
       key: _formKey,
       child: widget.child,
-      autovalidate: widget.autovalidate,
+      autovalidateMode: AutovalidationUtils.mode(widget.autovalidate),
       onWillPop: widget.onWillPop,
       onChanged: () {
         if (widget.onChanged != null) {
@@ -118,4 +119,19 @@ class FormBuilderState extends State<FormBuilder> {
       },
     );
   }
+}
+
+class AutovalidationUtils
+{
+	static AutovalidateMode mode(bool autovalidate) => (autovalidate ?? false) ? AutovalidateMode.always : AutovalidateMode.disabled;
+}
+
+class MaxLengthEnforcementUtils
+{
+	static MaxLengthEnforcement enforcement(bool enforced)
+	{
+			if (enforced == null) return MaxLengthEnforcement.none;
+			if (enforced) return MaxLengthEnforcement.enforced;
+			return MaxLengthEnforcement.none;
+	}
 }

@@ -150,7 +150,7 @@ class FormBuilderTextFieldState extends State<FormBuilderTextField> {
       decoration: widget.decoration.copyWith(
         enabled: !_readOnly,
       ),
-      autovalidate: widget.autovalidate ?? false,
+      autovalidateMode: AutovalidationUtils.mode(widget.autovalidate),
       // initialValue: "${_initialValue ?? ''}",
       maxLines: widget.maxLines,
       keyboardType: widget.keyboardType,
@@ -167,7 +167,7 @@ class FormBuilderTextFieldState extends State<FormBuilderTextField> {
       maxLength: widget.maxLength,
       inputFormatters: widget.inputFormatters,
       keyboardAppearance: widget.keyboardAppearance,
-      maxLengthEnforced: widget.maxLengthEnforced,
+      maxLengthEnforcement: MaxLengthEnforcementUtils.enforcement(widget.maxLengthEnforced),
       onFieldSubmitted: widget.onFieldSubmitted,
       scrollPadding: widget.scrollPadding,
       textAlign: widget.textAlign,

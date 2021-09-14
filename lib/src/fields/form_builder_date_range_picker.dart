@@ -187,7 +187,7 @@ class FormBuilderDateRangePickerState
           widget.onSaved(transformed ?? val);
         }
       },
-      autovalidate: widget.autovalidate ?? false,
+      autovalidateMode: AutovalidationUtils.mode(widget.autovalidate),
       builder: (FormFieldState<List<DateTime>> field) {
         return TextField(
           enabled: !_readOnly,
@@ -214,7 +214,7 @@ class FormBuilderDateRangePickerState
           maxLength: widget.maxLength,
           inputFormatters: widget.inputFormatters,
           keyboardAppearance: widget.keyboardAppearance,
-          maxLengthEnforced: widget.maxLengthEnforced,
+          maxLengthEnforcement: MaxLengthEnforcementUtils.enforcement(widget.maxLengthEnforced),
           scrollPadding: widget.scrollPadding,
           textAlign: widget.textAlign,
           textCapitalization: widget.textCapitalization,

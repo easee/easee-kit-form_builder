@@ -162,7 +162,7 @@ class _FormBuilderColorPickerState extends State<FormBuilderColorPicker> {
             widget.onSaved(transformed ?? val);
           }
         },
-        autovalidate: widget.autovalidate ?? false,
+        autovalidateMode: AutovalidationUtils.mode(widget.autovalidate),
         builder: (FormFieldState<Color> field) {
           return TextField(
             style: widget.style,
@@ -202,8 +202,8 @@ class _FormBuilderColorPickerState extends State<FormBuilderColorPicker> {
             enableInteractiveSelection: widget.enableInteractiveSelection,
             inputFormatters: widget.inputFormatters,
             keyboardAppearance: widget.keyboardAppearance,
-            maxLength: widget.maxLength,
-            maxLengthEnforced: widget.maxLengthEnforced,
+            maxLength: widget.maxLength,						
+            maxLengthEnforcement: MaxLengthEnforcementUtils.enforcement(widget.maxLengthEnforced),
             maxLines: widget.maxLines,
             minLines: widget.minLines,
             onEditingComplete: widget.onEditingComplete,
