@@ -1,8 +1,9 @@
+// ignore_for_file: avoid_print, use_key_in_widget_constructors
+
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_form_builder/flutter_form_builder.dart';
-import 'package:intl/intl.dart';
 
 import 'data.dart';
 
@@ -15,7 +16,7 @@ class MyApp extends StatelessWidget {
       title: 'Flutter FormBuilder Demo',
       theme: ThemeData(
         primarySwatch: Colors.blue,
-        inputDecorationTheme: InputDecorationTheme(
+        inputDecorationTheme: const InputDecorationTheme(
           // labelStyle: TextStyle(color: Colors.purple),
           border: OutlineInputBorder(
             gapPadding: 10,
@@ -28,7 +29,8 @@ class MyApp extends StatelessWidget {
   }
 }
 
-class MyHomePage extends StatefulWidget {
+class MyHomePage extends StatefulWidget 
+{
   @override
   MyHomePageState createState() {
     return MyHomePageState();
@@ -43,17 +45,18 @@ class MyHomePageState extends State<MyHomePage> {
   final GlobalKey<FormBuilderState> _fbKey = GlobalKey<FormBuilderState>();
   final GlobalKey<FormFieldState> _specifyTextFieldKey = GlobalKey<FormFieldState>();
 
-  ValueChanged _onChanged = (val) => print(val);
+  void _onChanged  (val) => print(val);
+
   var genderOptions = ['Male', 'Female', 'Other'];
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("FormBuilder Example"),
+        title: const Text("FormBuilder Example"),
       ),
       body: Padding(
-        padding: EdgeInsets.all(10),
+        padding: const EdgeInsets.all(10),
         child: SingleChildScrollView(
           child: Column(
             children: <Widget>[
@@ -61,36 +64,36 @@ class MyHomePageState extends State<MyHomePage> {
                 // context,
                 key: _fbKey,
                 // autovalidate: true,
-                initialValue: {
-                  'movie_rating': 3,
+                initialValue: const {
+                  "movie_rating": 3,
                 },
                 readOnly: false,
                 child: Column(
                   children: <Widget>[
                     FormBuilderFilterChip(
                       attribute: 'filter_chip',
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Select many options',
                       ),
                       options: [
-                        FormBuilderFieldOption(value: 'Test', child: Text('Test')),
-                        FormBuilderFieldOption(value: 'Test 1', child: Text('Test 1')),
-                        FormBuilderFieldOption(value: 'Test 2', child: Text('Test 2')),
-                        FormBuilderFieldOption(value: 'Test 3', child: Text('Test 3')),
-                        FormBuilderFieldOption(value: 'Test 4', child: Text('Test 4')),
+                        FormBuilderFieldOption(value: 'Test', child: const Text('Test')),
+                        FormBuilderFieldOption(value: 'Test 1', child: const Text('Test 1')),
+                        FormBuilderFieldOption(value: 'Test 2', child: const Text('Test 2')),
+                        FormBuilderFieldOption(value: 'Test 3', child: const Text('Test 3')),
+                        FormBuilderFieldOption(value: 'Test 4', child: const Text('Test 4')),
                       ],
                     ),
                     FormBuilderChoiceChip(
                       attribute: 'choice_chip',
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: 'Select an option',
                       ),
                       options: [
-                        FormBuilderFieldOption(value: 'Test', child: Text('Test')),
-                        FormBuilderFieldOption(value: 'Test 1', child: Text('Test 1')),
-                        FormBuilderFieldOption(value: 'Test 2', child: Text('Test 2')),
-                        FormBuilderFieldOption(value: 'Test 3', child: Text('Test 3')),
-                        FormBuilderFieldOption(value: 'Test 4', child: Text('Test 4')),
+                        FormBuilderFieldOption(value: 'Test', child: const Text('Test')),
+                        FormBuilderFieldOption(value: 'Test 1', child: const Text('Test 1')),
+                        FormBuilderFieldOption(value: 'Test 2', child: const Text('Test 2')),
+                        FormBuilderFieldOption(value: 'Test 3', child: const Text('Test 3')),
+                        FormBuilderFieldOption(value: 'Test 4', child: const Text('Test 4')),
                       ],
                     ),
                     FormBuilderCustomField(
@@ -105,11 +108,11 @@ class MyHomePageState extends State<MyHomePage> {
                           return InputDecorator(
                             decoration: InputDecoration(
                               labelText: "Select option",
-                              contentPadding: EdgeInsets.only(top: 10.0, bottom: 0.0),
+                              contentPadding: const EdgeInsets.only(top: 10.0, bottom: 0.0),
                               border: InputBorder.none,
                               errorText: field.errorText,
                             ),
-                            child: Container(
+                            child: SizedBox(
                               height: 200,
                               child: CupertinoPicker(
                                 itemExtent: 30,
@@ -128,7 +131,7 @@ class MyHomePageState extends State<MyHomePage> {
                       attribute: 'color_picker',
                       // initialValue: Colors.yellow,
                       colorPickerType: ColorPickerType.SlidePicker,
-                      decoration: InputDecoration(labelText: "Pick Color"),
+                      decoration: const InputDecoration(labelText: "Pick Color"),
                     ),
                     // FormBuilderChipsInput(
                     //   decoration: InputDecoration(labelText: "Chips"),
@@ -177,30 +180,30 @@ class MyHomePageState extends State<MyHomePage> {
                     //     );
                     //   },
                     // ),
-                    FormBuilderDateTimePicker(
-                      attribute: "date",
-                      onChanged: _onChanged,
-                      inputType: InputType.time,
-                      decoration: InputDecoration(
-                        labelText: "Appointment Time",
-                      ),
-                      validator: (val) => null,
-                      initialTime: TimeOfDay(hour: 8, minute: 0),
-                      // initialValue: DateTime.now(),
-                      // readonly: true,
-                    ),
-                    FormBuilderDateRangePicker(
-                      attribute: "date_range",
-                      firstDate: DateTime(1970),
-                      lastDate: DateTime(2030),
-                      format: DateFormat("yyyy-MM-dd"),
-                      onChanged: _onChanged,
-                      decoration: InputDecoration(
-                        labelText: "Date Range",
-                        helperText: "Helper text",
-                        hintText: "Hint text",
-                      ),
-                    ),
+                    // FormBuilderDateTimePicker(
+                    //   attribute: "date",
+                    //   onChanged: _onChanged,
+                    //   inputType: InputType.time,
+                    //   decoration: InputDecoration(
+                    //     labelText: "Appointment Time",
+                    //   ),
+                    //   validator: (val) => null,
+                    //   initialTime: TimeOfDay(hour: 8, minute: 0),
+                    //   // initialValue: DateTime.now(),
+                    //   // readonly: true,
+                    // ),
+                    // FormBuilderDateRangePicker(
+                    //   attribute: "date_range",
+                    //   firstDate: DateTime(1970),
+                    //   lastDate: DateTime(2030),
+                    //   format: DateFormat("yyyy-MM-dd"),
+                    //   onChanged: _onChanged,
+                    //   decoration: InputDecoration(
+                    //     labelText: "Date Range",
+                    //     helperText: "Helper text",
+                    //     hintText: "Hint text",
+                    //   ),
+                    // ),
                     FormBuilderSlider(
                       attribute: "slider",
                       validators: [FormBuilderValidators.min(6)],
@@ -211,7 +214,7 @@ class MyHomePageState extends State<MyHomePage> {
                       divisions: 20,
                       activeColor: Colors.red,
                       inactiveColor: Colors.pink[100],
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Number of things",
                       ),
                     ),
@@ -221,11 +224,11 @@ class MyHomePageState extends State<MyHomePage> {
                       onChanged: _onChanged,
                       min: 0.0,
                       max: 100.0,
-                      initialValue: RangeValues(4, 7),
+                      initialValue: const RangeValues(4, 7),
                       divisions: 20,
                       activeColor: Colors.red,
                       inactiveColor: Colors.pink[100],
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Price Range",
                       ),
                     ),
@@ -237,13 +240,13 @@ class MyHomePageState extends State<MyHomePage> {
                       label: RichText(
                         text: TextSpan(
                           children: [
-                            TextSpan(
+                            const TextSpan(
                               text: 'I have read and agree to the ',
                               style: TextStyle(color: Colors.black),
                             ),
                             TextSpan(
                               text: 'Terms and Conditions',
-                              style: TextStyle(color: Colors.blue),
+                              style: const TextStyle(color: Colors.blue),
                               recognizer: TapGestureRecognizer()
                                 ..onTap = () {
                                   print("launch url");
@@ -260,7 +263,7 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                     FormBuilderTextField(
                       attribute: "age",
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText:
                             "This value is passed along to the [Text.maxLines] attribute of the [Text] widget used to display the hint text.",
                       ),
@@ -275,7 +278,7 @@ class MyHomePageState extends State<MyHomePage> {
                     ),
                     FormBuilderDropdown(
                       attribute: "gender",
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Gender",
                         border: UnderlineInputBorder(
                           borderSide: BorderSide(
@@ -285,30 +288,31 @@ class MyHomePageState extends State<MyHomePage> {
                         ),
                       ),
                       // initialValue: 'Male',
-                      hint: Text('Select Gender'),
+                      hint: const Text('Select Gender'),
                       validators: [FormBuilderValidators.required()],
                       items: genderOptions
                           .map((gender) => DropdownMenuItem(
                                 value: gender,
-                                child: Text('$gender'),
+                                child: Text(gender),
                               ))
                           .toList(),
                     ),
                     FormBuilderTypeAhead(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Country",
                       ),
                       attribute: 'country',
                       onChanged: _onChanged,
-                      itemBuilder: (context, country) {
+                      itemBuilder: (context, String country) {
                         return ListTile(
                           title: Text(country),
                         );
                       },
                       controller: TextEditingController(text: ''),
                       initialValue: "Uganda",
-                      suggestionsCallback: (query) {
-                        if (query.length != 0) {
+                      suggestionsCallback: (query) 
+											{
+                        if (query.isNotEmpty) {
                           var lowercaseQuery = query.toLowerCase();
                           return allCountries.where((country) {
                             return country.toLowerCase().contains(lowercaseQuery);
@@ -323,7 +327,7 @@ class MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                     FormBuilderTypeAhead(
-                      decoration: InputDecoration(
+                      decoration: const InputDecoration(
                         labelText: "Contact Person",
                       ),
                       initialValue: contacts[0],
@@ -337,7 +341,7 @@ class MyHomePageState extends State<MyHomePage> {
                       },
                       selectionToTextTransformer: (Contact c) => c.email,
                       suggestionsCallback: (query) {
-                        if (query.length != 0) {
+                        if (query.isNotEmpty) {
                           var lowercaseQuery = query.toLowerCase();
                           return contacts.where((contact) {
                             return contact.name.toLowerCase().contains(lowercaseQuery);
@@ -352,7 +356,7 @@ class MyHomePageState extends State<MyHomePage> {
                       },
                     ),
                     FormBuilderRadio(
-                      decoration: InputDecoration(labelText: 'My chosen language'),
+                      decoration: const InputDecoration(labelText: 'My chosen language'),
                       attribute: "best_language",
                       leadingInput: true,
                       onChanged: _onChanged,
@@ -360,60 +364,60 @@ class MyHomePageState extends State<MyHomePage> {
                       options: ["Dart", "Kotlin", "Java", "Swift", "Objective-C"]
                           .map((lang) => FormBuilderFieldOption(
                                 value: lang,
-                                child: Text('$lang'),
+                                child: Text(lang),
                               ))
                           .toList(growable: false),
                     ),
                     FormBuilderRadio(
-                      decoration: InputDecoration(labelText: 'Pick a number'),
+                      decoration: const InputDecoration(labelText: 'Pick a number'),
                       attribute: "number",
                       options: [
                         FormBuilderFieldOption(
                           value: 1,
-                          child: Text('One'),
+                          child: const Text('One'),
                         ),
                         FormBuilderFieldOption(
                           value: 2,
-                          child: Text('Two'),
+                          child: const Text('Two'),
                         ),
                         FormBuilderFieldOption(
                           value: 3,
-                          child: Text('Three'),
+                          child: const Text('Three'),
                         ),
                       ],
                     ),
                     FormBuilderSegmentedControl(
-                      decoration: InputDecoration(labelText: "Movie Rating (Archer)"),
+                      decoration: const InputDecoration(labelText: "Movie Rating (Archer)"),
                       attribute: "movie_rating",
-                      textStyle: TextStyle(fontWeight: FontWeight.bold),
+                      textStyle: const TextStyle(fontWeight: FontWeight.bold),
                       options: List.generate(5, (i) => i + 1)
                           .map((number) => FormBuilderFieldOption(
                                 value: number,
                                 child: Text(
                                   "$number",
-                                  style: TextStyle(fontWeight: FontWeight.bold),
+                                  style: const TextStyle(fontWeight: FontWeight.bold),
                                 ),
                               ))
                           .toList(),
                       onChanged: _onChanged,
                     ),
                     FormBuilderSwitch(
-                      label: Text('I Accept the tems and conditions'),
+                      label: const Text('I Accept the tems and conditions'),
                       attribute: "accept_terms_switch",
                       initialValue: true,
                       onChanged: _onChanged,
                     ),
                     FormBuilderTouchSpin(
-                      decoration: InputDecoration(labelText: "Stepper"),
+                      decoration: const InputDecoration(labelText: "Stepper"),
                       attribute: "stepper",
                       initialValue: 10,
                       step: 1,
                       iconSize: 48.0,
-                      addIcon: Icon(Icons.arrow_right),
-                      subtractIcon: Icon(Icons.arrow_left),
+                      addIcon: const Icon(Icons.arrow_right),
+                      subtractIcon: const Icon(Icons.arrow_left),
                     ),
                     FormBuilderRate(
-                      decoration: InputDecoration(labelText: "Rate this form"),
+                      decoration: const InputDecoration(labelText: "Rate this form"),
                       attribute: "rate",
                       iconSize: 32.0,
                       initialValue: 1.0,
@@ -425,9 +429,9 @@ class MyHomePageState extends State<MyHomePage> {
                       isHalfAllowed: true,
                     ),
                     FormBuilderCheckboxList(
-                      decoration: InputDecoration(labelText: "The language of my people"),
+                      decoration: const InputDecoration(labelText: "The language of my people"),
                       attribute: "languages",
-                      initialValue: ["Dart"],
+                      initialValue: const ["Dart"],
                       leadingInput: true,
                       options: [
                         FormBuilderFieldOption(value: "Dart"),
@@ -441,14 +445,14 @@ class MyHomePageState extends State<MyHomePage> {
                     FormBuilderCustomField(
                       attribute: 'custom',
                       valueTransformer: (val) {
-                        if (val == "Other") return _specifyTextFieldKey.currentState.value;
+                        if (val == "Other") return _specifyTextFieldKey.currentState?.value;
                         return val;
                       },
                       formField: FormField(
                         builder: (FormFieldState<String> field) {
                           var languages = ["English", "Spanish", "Somali", "Other"];
                           return InputDecorator(
-                            decoration: InputDecoration(labelText: "What's your preferred language?"),
+                            decoration: const InputDecoration(labelText: "What's your preferred language?"),
                             child: Column(
                               children: languages
                                   .map(
@@ -469,7 +473,7 @@ class MyHomePageState extends State<MyHomePage> {
                                                     Text(
                                                       lang,
                                                     ),
-                                                    SizedBox(width: 20),
+                                                    const SizedBox(width: 20),
                                                     Expanded(
                                                       child: TextFormField(
                                                         key: _specifyTextFieldKey,
@@ -487,18 +491,18 @@ class MyHomePageState extends State<MyHomePage> {
                         },
                       ),
                     ),
-                    FormBuilderImagePicker(
-                      attribute: "images",
-                      validators: [
-                        FormBuilderValidators.required(),
-                        (images) {
-                          if (images.length < 2) {
-                            return "Two or more images is required.";
-                          }
-                          return null;
-                        }
-                      ],
-                    ),
+                    // FormBuilderImagePicker(
+                    //   attribute: "images",
+                    //   validators: [
+                    //     FormBuilderValidators.required(),
+                    //     (images) {
+                    //       if (images.length < 2) {
+                    //         return "Two or more images is required.";
+                    //       }
+                    //       return null;
+                    //     }
+                    //   ],
+                    // ),
                     // FormBuilderCountryPicker(
                     //   defaultSelectedCountryIsoCode: 'US',
                     //   attribute: "country",
@@ -515,7 +519,7 @@ class MyHomePageState extends State<MyHomePage> {
                     // ),
                     
                     FormBuilderSignaturePad(
-                      decoration: InputDecoration(labelText: "Signature"),
+                      decoration: const InputDecoration(labelText: "Signature"),
                       attribute: "signature",
                       // height: 250,
                       clearButtonText: "Start Over",
@@ -529,32 +533,32 @@ class MyHomePageState extends State<MyHomePage> {
                   Expanded(
                     child: MaterialButton(
                       color: Theme.of(context).colorScheme.secondary,
-                      child: Text(
+                      child: const Text(
                         "Submit",
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                        if (_fbKey.currentState.saveAndValidate()) {
-                          print(_fbKey.currentState.value);
+                        if (_fbKey.currentState?.saveAndValidate() ?? false) {
+                          print(_fbKey.currentState?.value);
                         } else {
-                          print(_fbKey.currentState.value);
+                          print(_fbKey.currentState?.value);
                           print("validation failed");
                         }
                       },
                     ),
                   ),
-                  SizedBox(
+                  const SizedBox(
                     width: 20,
                   ),
                   Expanded(
                     child: MaterialButton(
                       color: Theme.of(context).colorScheme.secondary,
-                      child: Text(
+                      child: const Text(
                         "Reset",
                         style: TextStyle(color: Colors.white),
                       ),
                       onPressed: () {
-                        _fbKey.currentState.reset();
+                        _fbKey.currentState?.reset();
                       },
                     ),
                   ),
